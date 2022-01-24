@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Faculty {
     private final Long id;
-    private final String name;
-    private final String color;
+    private String name;
+    private String color;
 
     public Faculty(Long id, String name, String color) {
         this.id = id;
@@ -25,17 +25,25 @@ public class Faculty {
         return color;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Faculty)) return false;
         Faculty faculty = (Faculty) o;
-        return id.equals(faculty.id) && name.equals(faculty.name) && color.equals(faculty.color);
+        return id.equals(faculty.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, color);
+        return Objects.hash(id);
     }
 
     @Override
