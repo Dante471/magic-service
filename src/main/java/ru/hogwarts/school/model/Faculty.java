@@ -1,4 +1,4 @@
-package ru.hogwarts.school.domain;
+package ru.hogwarts.school.model;
 
 import java.util.Objects;
 
