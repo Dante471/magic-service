@@ -1,6 +1,5 @@
 package ru.hogwarts.school.controller;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.service.FacultyService;
@@ -19,24 +18,18 @@ public class FacultyController {
     }
 
     @PostMapping
-    public ResponseEntity<Faculty> createFaculty(@RequestBody Faculty faculty) {
-        Faculty createdFaculty = facultyService.addFaculty(faculty);
-        return ResponseEntity.ok(createdFaculty);
+    public Faculty createFaculty(@RequestBody Faculty faculty) {
+        return facultyService.addFaculty(faculty);
     }
 
     @GetMapping("{facultyId}")
-    public ResponseEntity<Faculty> getFaculty(@PathVariable Long facultyId) {
-        Faculty faculty = facultyService.getFacultyById(facultyId);
-        if(faculty == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(faculty);
+    public Faculty getFaculty(@PathVariable Long facultyId) {
+        return facultyService.getFacultyById(facultyId);
     }
 
     @PutMapping
-    public ResponseEntity<Faculty> updateFaculty(@RequestBody Faculty faculty) {
-        Faculty updatedFaculty = facultyService.updateFaculty(faculty.getId(), faculty);
-        return ResponseEntity.ok(updatedFaculty);
+    public Faculty updateFaculty(@RequestBody Faculty faculty) {
+        return facultyService.updateFaculty(faculty.getId(), faculty);
     }
 
     @DeleteMapping("{facultyId}")
@@ -45,7 +38,7 @@ public class FacultyController {
     }
 
     @GetMapping("{color}")
-    public Collection<Faculty> getStudentsByAge(@PathVariable String color) {
+    public Collection<Faculty> getFacultyByColor(@PathVariable String color) {
         return facultyService.getAll().stream()
                 .filter(faculty -> faculty.getColor().equals(color))
                 .collect(Collectors.toList());

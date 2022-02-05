@@ -3,8 +3,7 @@ package ru.hogwarts.school.model;
 import java.util.Objects;
 
 public class Student {
-    private final Long id;
-
+    private final long id;
     private String name;
     private int age;
 
@@ -39,7 +38,7 @@ public class Student {
         if (this == o) return true;
         if (!(o instanceof Student)) return false;
         Student student = (Student) o;
-        return id.equals(student.id);
+        return id == student.id;
     }
 
     @Override
